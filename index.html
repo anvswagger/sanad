@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/sanad-logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شركة سند الحديثة | خدمات تشطيب متكاملة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <header class="site-header">
+      <img src="/logo.png" alt="شعار شركة سند للمقاولات والاستثمار العقاري" class="site-logo">
+    </header>
+
+    <main class="landing-content">
+      <h1 class="headline">
+        <span class="line">تجربة تشطيب خالية من العناء..</span>
+        <span class="line">حيث تلتقي <span class="highlight">الرفاهية</span> براحة البال</span>
+      </h1>
+
+      <p class="subheadline">وفر وقتك وجهدك، وابدأ بوضوح مع استشارة مجانية خاصة من المهندس محمد قريصة لوضع خطة تشطيب
+        متكاملة لمنزلك.</p>
+
+      <div class="hero-image-container">
+        <img src="/portrait.jpg" alt="المهندس محمد قريصة" class="hero-image">
+      </div>
+
+      <div class="cta-section">
+        <form id="consultationForm" class="consultation-form">
+
+          <!-- Step 1: Project Type -->
+          <div class="form-step active" id="step-1">
+            <div class="form-group">
+              <label class="form-label">نوع المشروع:</label>
+              <div class="selection-grid project-type-grid">
+                <!-- Villa -->
+                <input type="radio" name="projectType" id="type-villa" value="villa" class="hidden-radio" required>
+                <label for="type-villa" class="selection-card">
+                  <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 21h18M5 21V7l8-4 8 4v14M9 10a2 2 0 0 1 2-2h2a2 2 0 0 1 2-2v11H9V10z" />
+                    </svg>
+                  </div>
+                  <span>فيلا</span>
+                </label>
+
+                <!-- Commercial -->
+                <input type="radio" name="projectType" id="type-commercial" value="commercial" class="hidden-radio">
+                <label for="type-commercial" class="selection-card">
+                  <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                      <path d="M9 22v-4h6v4" />
+                      <path d="M8 6h.01" />
+                      <path d="M16 6h.01" />
+                      <path d="M8 10h.01" />
+                      <path d="M16 10h.01" />
+                      <path d="M8 14h.01" />
+                      <path d="M16 14h.01" />
+                      <path d="M8 18h.01" />
+                      <path d="M16 18h.01" />
+                    </svg>
+                  </div>
+                  <span>مشروع تجاري</span>
+                </label>
+
+                <!-- Residential -->
+                <input type="radio" name="projectType" id="type-residential" value="residential" class="hidden-radio">
+                <label for="type-residential" class="selection-card">
+                  <div class="icon-box">
+                    <!-- Building Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+                      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+                      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+                      <path d="M10 6h4" />
+                      <path d="M10 10h4" />
+                      <path d="M10 14h4" />
+                      <path d="M10 18h4" />
+                    </svg>
+                  </div>
+                  <span>عمارة سكنية</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button next-btn" onclick="nextStep(1)">التالي</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Area -->
+          <div class="form-step" id="step-2">
+            <div class="form-group">
+              <label class="form-label">مساحة المسقوف (م²):</label>
+              <div class="selection-grid area-grid">
+                <input type="radio" name="area" id="area-100" value="100-300" class="hidden-radio" required>
+                <label for="area-100" class="selection-card basic-card">100-300</label>
+
+                <input type="radio" name="area" id="area-300" value="300-500" class="hidden-radio">
+                <label for="area-300" class="selection-card basic-card">300-500</label>
+
+                <input type="radio" name="area" id="area-500" value="500-700" class="hidden-radio">
+                <label for="area-500" class="selection-card basic-card">500-700</label>
+
+                <input type="radio" name="area" id="area-700" value="700+" class="hidden-radio">
+                <label for="area-700" class="selection-card basic-card">700-1000+</label>
+              </div>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button back-btn" onclick="prevStep(2)">السابق</button>
+              <button type="button" class="cta-button next-btn" onclick="nextStep(2)">التالي</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Contact Info -->
+          <div class="form-step" id="step-3">
+            <div class="form-group contact-inputs">
+              <input type="text" name="name" placeholder="الاسم الكريم" required class="form-input">
+              <input type="tel" name="phone" placeholder="رقم الهاتف (مثال: 0911234567)" required class="form-input"
+                dir="ltr" pattern="[0-9]{10}" maxlength="10" minlength="10" title="يجب أن يتكون رقم الهاتف من 10 أرقام"
+                style="text-align: right;">
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button back-btn" onclick="prevStep(3)">السابق</button>
+              <button type="submit" class="cta-button">احجز استشارتك الآن</button>
+            </div>
+          </div>
+        </form>
+
+        <ul class="benefit-list">
+          <li class="benefit-item">
+            <strong>إدارة شاملة توفر وقتك:</strong>
+            <p>نتولى كافة التفاصيل والمتابعة نيابةً عنك لتستلم منزلك دون أي عناء.</p>
+          </li>
+          <li class="benefit-item">
+            <strong>جودة تنفيذ عالمية:</strong>
+            <p>نهتم بأدق التفاصيل ونستخدم أفضل المواد لضمان فخامة وتصاميم تدوم طويلاً.</p>
+          </li>
+          <li class="benefit-item">
+            <strong>تقارير دورية موثقة:</strong>
+            <p>تصلك تقارير أسبوعية لتتابع سير العمل وأنت مرتاح البال.</p>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Eng. Mohamed Qraisa &copy; 2026</p>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
