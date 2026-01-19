@@ -32,7 +32,7 @@ body {
 
 body {
   font-family: var(--font-main);
-  background-color: var(--white);
+  background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
   direction: rtl;
@@ -45,8 +45,8 @@ body {
 /* Header */
 .site-header {
   background-color: var(--white);
-  padding: 0.5rem 0;
-  /* Reduced padding */
+  padding: 0.25rem 0;
+  /* Trimmed padding to make the banner smaller */
   width: 100%;
   border-bottom: 4px solid var(--accent-color);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -57,8 +57,8 @@ body {
 }
 
 .site-logo {
-  height: 60px;
-  /* Reduced from 80px */
+  height: 44px;
+  /* Reduced banner logo size further */
   max-width: 100%;
   /* Prevent overflow */
   object-fit: contain;
@@ -129,14 +129,14 @@ body {
 
 /* Image */
 .hero-image-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   position: relative;
   display: inline-block;
   /* Thick Orange Border Container */
   padding: 0;
-  border: 6px solid var(--accent-color);
-  /* Slightly thinner on mobile */
-  border-radius: 16px;
+  border: 4px solid var(--accent-color);
+  /* Thinner border to shrink overall banner footprint */
+  border-radius: 14px;
   background-color: transparent;
   overflow: hidden;
   /* Clips the image radius */
@@ -147,8 +147,8 @@ body {
 
 .hero-image {
   width: 100%;
-  max-width: 240px;
-  /* Slightly smaller max-width */
+  max-width: 190px;
+  /* Smaller hero image to reduce banner height */
   display: block;
   background: transparent;
 }
@@ -457,11 +457,11 @@ body {
   }
 
   .site-header {
-    padding: 1rem 0;
+    padding: 0.6rem 0;
   }
 
   .site-logo {
-    height: 80px;
+    height: 54px;
   }
 
   .cta-label {
