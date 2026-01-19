@@ -66,6 +66,12 @@ if (consultationForm) {
         e.preventDefault();
         console.log('Form submitted!');
 
+        // Track lead conversion with Facebook Pixel
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+            console.log('Lead event tracked');
+        }
+
         // Get form data
         const formData = new FormData(consultationForm);
         const projectType = formData.get('projectType');
