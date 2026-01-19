@@ -147,7 +147,7 @@ body {
 
 .hero-image {
   width: 100%;
-  max-width: 320px;
+  max-width: 240px;
   /* Slightly smaller max-width */
   display: block;
   background: transparent;
