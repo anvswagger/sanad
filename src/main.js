@@ -75,11 +75,11 @@ if (consultationForm) {
         // Get form data
         const formData = new FormData(consultationForm);
         const projectType = formData.get('projectType');
-        const area = formData.get('area');
+        const budget = formData.get('budget');
         const name = formData.get('name');
         const phone = formData.get('phone');
 
-        console.log('Form data:', { projectType, area, name, phone });
+        console.log('Form data:', { projectType, budget, name, phone });
 
         // Prepare webhook payload
         const webhookData = {
@@ -87,7 +87,7 @@ if (consultationForm) {
             full_name: name,
             phone: phone,
             worktype: projectType,
-            stage: area
+            stage: budget
         };
 
         console.log('Sending webhook data:', webhookData);
