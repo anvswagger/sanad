@@ -104,13 +104,6 @@ if (consultationForm) {
         const name = formData.get('name');
         const phone = formData.get('phone');
 
-        // Track lead conversion with Facebook Pixel
-        // Note: Only qualified leads reach this step now
-        if (typeof fbq === 'function') {
-            fbq('track', 'Lead');
-            console.log('%cLead event tracked', 'color: green; font-weight: bold;');
-        }
-
         // Prepare webhook payload
         const webhookData = {
             client_code: "861288b3f4d00e3dcaea10fc8d6b8dad",
