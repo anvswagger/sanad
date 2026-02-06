@@ -104,6 +104,12 @@ if (consultationForm) {
         const name = formData.get('name');
         const phone = formData.get('phone');
 
+        // Track lead conversion with Facebook Pixel
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+            console.log('%cLead event tracked (Button Click)', 'color: green; font-weight: bold;');
+        }
+
         // Prepare webhook payload
         const webhookData = {
             client_code: "861288b3f4d00e3dcaea10fc8d6b8dad",
