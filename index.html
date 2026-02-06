@@ -12,20 +12,22 @@
     rel="stylesheet">
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1915955479314419');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1915955479314419&ev=PageView&noscript=1"
-  /></noscript>
+      src="https://www.facebook.com/tr?id=1915955479314419&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
 </head>
 
@@ -50,6 +52,10 @@
 
       <div class="cta-section">
         <form id="consultationForm" class="consultation-form">
+          <!-- Progress Bar -->
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
 
           <!-- Step 1: Project Type -->
           <div class="form-step active" id="step-1">
@@ -114,8 +120,29 @@
             </div>
           </div>
 
-          <!-- Step 2: Area -->
+          <!-- Step 2: Finishing Type (NEW) -->
           <div class="form-step" id="step-2">
+            <div class="form-group">
+              <label class="form-label">نوع التشطيب المطلوب:</label>
+              <div class="selection-grid project-type-grid">
+                <input type="radio" name="finishingType" id="finish-eco" value="economic" class="hidden-radio" required>
+                <label for="finish-eco" class="selection-card basic-card">اقتصادي</label>
+
+                <input type="radio" name="finishingType" id="finish-med" value="medium" class="hidden-radio">
+                <label for="finish-med" class="selection-card basic-card">متوسط</label>
+
+                <input type="radio" name="finishingType" id="finish-vip" value="vip" class="hidden-radio">
+                <label for="finish-vip" class="selection-card basic-card">VIP</label>
+              </div>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button back-btn" onclick="prevStep(2)">السابق</button>
+              <button type="button" class="cta-button next-btn" onclick="nextStep(2)">التالي</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Area -->
+          <div class="form-step" id="step-3">
             <div class="form-group">
               <label class="form-label">مساحة المسقوف (م²):</label>
               <div class="selection-grid area-grid">
@@ -133,13 +160,56 @@
               </div>
             </div>
             <div class="form-navigation">
-              <button type="button" class="cta-button back-btn" onclick="prevStep(2)">السابق</button>
-              <button type="button" class="cta-button next-btn" onclick="nextStep(2)">التالي</button>
+              <button type="button" class="cta-button back-btn" onclick="prevStep(3)">السابق</button>
+              <button type="button" class="cta-button next-btn" onclick="nextStep(3)">التالي</button>
             </div>
           </div>
 
-          <!-- Step 3: Contact Info -->
-          <div class="form-step" id="step-3">
+          <!-- Step 4: Why Company? (NEW) -->
+          <div class="form-step" id="step-4">
+            <div class="form-group">
+              <label class="form-label">لماذا تفضل التعاون مع شركة بدلا من الإشراف على مشروعك بنفسك؟</label>
+              <div class="selection-grid wide-grid">
+                <input type="radio" name="reason" id="reason-quality" value="quality" class="hidden-radio" required>
+                <label for="reason-quality" class="selection-card basic-card">أبحث عن الجودة وتجنب أخطاء
+                  التنفيذ.</label>
+
+                <input type="radio" name="reason" id="reason-time" value="no_time" class="hidden-radio">
+                <label for="reason-time" class="selection-card basic-card">ليس لدي الوقت الكافي للإشراف</label>
+
+                <input type="radio" name="reason" id="reason-self" value="myself" class="hidden-radio">
+                <label for="reason-self" class="selection-card basic-card">أفكر في البدء بنفسي</label>
+
+                <input type="radio" name="reason" id="reason-budget" value="low_budget" class="hidden-radio">
+                <label for="reason-budget" class="selection-card basic-card">ميزانيتي محدودة جدا</label>
+              </div>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button back-btn" onclick="prevStep(4)">السابق</button>
+              <button type="button" class="cta-button next-btn" onclick="nextStep(4)">التالي</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Start Timing (NEW) -->
+          <div class="form-step" id="step-5">
+            <div class="form-group">
+              <label class="form-label">متى تخطط للبدء في أعمال التنفيذ؟</label>
+              <div class="selection-grid area-grid">
+                <input type="radio" name="timing" id="time-now" value="now" class="hidden-radio" required>
+                <label for="time-now" class="selection-card basic-card">الفترة الحالية</label>
+
+                <input type="radio" name="timing" id="time-later" value="planning" class="hidden-radio">
+                <label for="time-later" class="selection-card basic-card">مازلت اخطط ولست جاهز</label>
+              </div>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="cta-button back-btn" onclick="prevStep(5)">السابق</button>
+              <button type="button" class="cta-button next-btn" onclick="nextStep(5)">التالي</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Contact Info -->
+          <div class="form-step" id="step-6">
             <div class="form-group contact-inputs">
               <input type="text" name="name" placeholder="الاسم الكريم" required class="form-input">
               <input type="tel" name="phone" placeholder="رقم الهاتف (مثال: 0911234567)" required class="form-input"
@@ -147,7 +217,7 @@
                 style="text-align: right;">
             </div>
             <div class="form-navigation">
-              <button type="button" class="cta-button back-btn" onclick="prevStep(3)">السابق</button>
+              <button type="button" class="cta-button back-btn" onclick="prevStep(6)">السابق</button>
               <button type="submit" class="cta-button">احجز استشارتك الآن</button>
             </div>
           </div>

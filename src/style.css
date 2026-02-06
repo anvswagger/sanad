@@ -180,6 +180,26 @@ body {
   /* Clean look, no box */
   padding: 1rem 0;
   margin: 0 auto;
+  position: relative;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  max-width: 500px;
+  height: 8px;
+  background-color: var(--gray-200);
+  border-radius: 4px;
+  margin: 0 auto 1.5rem auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  width: 16.66%;
+  /* Default for 6 steps */
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .form-step {
@@ -237,6 +257,16 @@ body {
 
 .area-grid {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.wide-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .wide-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Clean Cards */

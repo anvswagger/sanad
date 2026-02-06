@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>شكراً لاهتمامك | مكتب محمد قريصة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Alexandria', sans-serif;
+            background-color: white;
+            color: #111827;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .thank-you-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fefce8;
+            /* Light Yellow */
+            color: #a16207;
+            /* Dark Yellow/Gold */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(161, 98, 7, 0.1);
+            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .info-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke-width: 3px;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .thank-you-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0c4da2;
+            margin: 0 0 1rem 0;
+        }
+
+        .thank-you-message {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 480px;
+            line-height: 1.6;
+            margin: 0 0 2.5rem 0;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2.5rem;
+            background-color: #0c4da2;
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(12, 70, 162, 0.2);
+        }
+
+        .home-btn:hover {
+            background-color: #0a3d82;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(12, 70, 162, 0.3);
+        }
+
+        .site-header,
+        .site-footer {
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" style="display: flex; flex-direction: column; min-height: 100vh;">
+        <header class="site-header">
+            <img src="/logo.png" alt="شعار شركة سند للمقاولات والاستثمار العقاري" class="site-logo">
+        </header>
+
+        <main class="thank-you-container">
+            <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+            </div>
+
+            <h1 class="thank-you-title">شكراً لك!</h1>
+
+            <p class="thank-you-message">
+                نشكرك على اهتمامك بخدماتنا.<br>
+                بناءً على إجاباتك، قد لا تكون خدماتنا الحالية مناسبة تماماً لاحتياجاتك في الوقت الحالي. <br>
+                نتمنى لك كل التوفيق في مشروعك.
+            </p>
+
+            <a href="/" class="home-btn">العودة للرئيسية</a>
+        </main>
+
+        <footer class="site-footer">
+            <p>Eng. Mohamed Qraisa &copy; 2026</p>
+        </footer>
+    </div>
+</body>
+
+</html>

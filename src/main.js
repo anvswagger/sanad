@@ -4,6 +4,18 @@ console.log('Landing page loaded');
 
 // Validation and Navigation Logic
 window.currentStep = 1;
+const totalSteps = 6;
+
+function updateProgressBar(step) {
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        const percentage = (step / totalSteps) * 100;
+        progressBar.style.width = `${percentage}%`;
+    }
+}
+
+// Initialize progress bar
+updateProgressBar(1);
 
 window.nextStep = function (step) {
     // 1. Get current step element
@@ -36,6 +48,19 @@ window.nextStep = function (step) {
         return;
     }
 
+    // --- NEW: Immediate Disqualification Logic ---
+    const checkedRadio = currentStepEl.querySelector('input[type="radio"]:checked');
+    if (checkedRadio) {
+        const val = checkedRadio.value;
+        const disqualifyingValues = ['economic', 'myself', 'low_budget', 'planning'];
+
+        if (disqualifyingValues.includes(val)) {
+            console.log(`%cImmediate Disqualification triggered by value: ${val}`, 'color: orange; font-weight: bold;');
+            window.location.href = '/unqualified.html';
+            return; // Stop navigation to next step
+        }
+    }
+
     // 3. Transition
     // Hide current
     currentStepEl.classList.remove('active');
@@ -45,6 +70,7 @@ window.nextStep = function (step) {
     if (nextStepEl) {
         nextStepEl.classList.add('active');
         window.currentStep = step + 1;
+        updateProgressBar(window.currentStep);
     }
 };
 
@@ -56,6 +82,7 @@ window.prevStep = function (step) {
         currentStepEl.classList.remove('active');
         prevStepEl.classList.add('active');
         window.currentStep = step - 1;
+        updateProgressBar(window.currentStep);
     }
 };
 
@@ -64,22 +91,25 @@ const consultationForm = document.getElementById('consultationForm');
 if (consultationForm) {
     consultationForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        console.log('Form submitted!');
-
-        // Track lead conversion with Facebook Pixel
-        if (typeof fbq === 'function') {
-            fbq('track', 'Lead');
-            console.log('Lead event tracked');
-        }
+        console.group('Form Submission (Qualified Lead)');
+        console.log('Submission started');
 
         // Get form data
         const formData = new FormData(consultationForm);
         const projectType = formData.get('projectType');
+        const finishingType = formData.get('finishingType');
         const area = formData.get('area');
+        const reason = formData.get('reason');
+        const timing = formData.get('timing');
         const name = formData.get('name');
         const phone = formData.get('phone');
 
-        console.log('Form data:', { projectType, area, name, phone });
+        // Track lead conversion with Facebook Pixel
+        // Note: Only qualified leads reach this step now
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+            console.log('%cLead event tracked', 'color: green; font-weight: bold;');
+        }
 
         // Prepare webhook payload
         const webhookData = {
@@ -87,24 +117,26 @@ if (consultationForm) {
             full_name: name,
             phone: phone,
             worktype: projectType,
-            stage: area
+            stage: area,
+            notes: `Finishing: ${finishingType}, Reason: ${reason}, Timing: ${timing}, Qualified: true`
         };
 
         console.log('Sending webhook data:', webhookData);
 
-        // Send using XMLHttpRequest (better CORS support)
+        // Send using XMLHttpRequest
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://hook.eu2.make.com/lamihs63e4izhnt4sfg5e74weipetewf', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onload = function () {
             console.log('Webhook response:', xhr.status, xhr.responseText);
+            console.groupEnd();
             window.location.href = '/thankyou.html';
         };
 
         xhr.onerror = function () {
             console.error('Webhook error');
-            // Still redirect even on error
+            console.groupEnd();
             window.location.href = '/thankyou.html';
         };
 
